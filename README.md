@@ -50,19 +50,17 @@ import retrofit.http.POST;
 
 public interface ApiInterface {
 
-    @FormUrlEncoded // annotation used in POST type requests
-    @POST("/retrofit/register.php")     // API's endpoints
+    @FormUrlEncoded 
+    @POST("/retrofit/register.php")     
     public void registration(@Field("name") String name,
                              @Field("email") String email,
                              @Field("password") String password,
                              @Field("logintype") String logintype,
                              Callback<SignUpResponse> callback);
-// In registration method @Field used to set the keys and String data type is representing a string
-// type value and callback is used to get the response from api and it will set it in our POJO class
 }
 ```
 
-![Create API Interface]()
+![Create API Interface](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/ApiInterface.JPG)
 
 
 **5.Define the RestAdapter: **
@@ -89,9 +87,92 @@ public class Api {
 }
 ```
 
-![Define the RestAdapter]()
+![Define the RestAdapter](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/Api.JPG)
 
 
 **6.Create a RecyclerView in our XML file: **
+
+Open res ⇒ layout ⇒ activity_main.xml (or) main.xml and add following code:
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#000"
+                android:hint="Full Name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColor="#000"
+                android:textColorHint="#000" />
+
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#000"
+                android:hint="Email Address"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColor="#000"
+                android:textColorHint="#000" />
+
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#000"
+                android:hint="Password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:textColor="#000"
+                android:textColorHint="#000" />
+
+
+            <Button
+                android:id="@+id/signUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Sign Up"
+                android:textColor="#fff"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
+```
 
 
