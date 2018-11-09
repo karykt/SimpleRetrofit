@@ -38,9 +38,9 @@ Define Internet permission in your Manifest file as showed bellow
 ![Add Internet Permission](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/internet_permission.JPG)
 
 
-**4.Create API Interface:** 
+**4.Create the API Interface:** 
 
-Following, we will create an Interface to define our different methods that will be used for network transactions. Let's name it ApiInterface.
+Following, we will create an Interface to define our different methods that will be used for network transactions. Let's name it *ApiInterface*.
 
 ```
 import retrofit.Callback;
@@ -63,9 +63,9 @@ public interface ApiInterface {
 ![Create API Interface](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/ApiInterface.JPG)
 
 
-**5.Define the RestAdapter: **
+**5.Define the RestAdapter:**
 
-Now we need to define the RestAdapter to implement the API’s. This class will have a method that create the connection and then returns the API Interface object.
+Now we need to define the RestAdapter to implement the API’s. This class will have a method that creates the connection and then returns the API Interface object.
 
 ```
 import retrofit.RestAdapter;
@@ -75,14 +75,14 @@ public class Api {
 
     public static ApiInterface getClient() {
 
-        // change your base URL
+      
         RestAdapter adapter = new RestAdapter.Builder()
-                .setEndpoint("http://mobileappdatabase.in/") //Set the Root URL
-                .build(); //Finally building the adapter
+                .setEndpoint("http://mobileappdatabase.in/") 
+                .build(); 
 
         //Creating object for our interface
         ApiInterface api = adapter.create(ApiInterface.class);
-        return api; // return the APIInterface object
+        return api;
     }
 }
 ```
@@ -90,9 +90,9 @@ public class Api {
 ![Define the RestAdapter](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/Api.JPG)
 
 
-**6.Create a RecyclerView in our XML file: **
+**6.Create a RecyclerView in our XML file:**
 
-Open res ⇒ layout ⇒ activity_main.xml (or) main.xml and add following code:
+Open res ⇒ layout ⇒ activity_main.xml (or) main.xml and add the following code:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -175,4 +175,97 @@ Open res ⇒ layout ⇒ activity_main.xml (or) main.xml and add following code:
 </RelativeLayout>
 ```
 
+**7.Add code to the MainActivity.java:**
+
+Finally, we are getting reference of the *EditText* and *Button.After* that we implemented the *setOnClickListener* event. The data in *EditText* is validate and then we are implementing signup api to save the data in our database. After getting response from the api we are displaying the message on the screen by using a Toast.
+
+Go to app ⇒ java ⇒ package ⇒ MainActivity.java and add the code below:
+
+
+```
+import android.Manifest;
+import android.app.ProgressDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
+public class MainActivity extends AppCompatActivity {
+
+    SignUpResponse signUpResponsesData;
+    EditText email, password, name;
+    Button signUp;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        // init the EditText and Button
+        name = (EditText) findViewById(R.id.username);
+        email = (EditText) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
+        signUp = (Button) findViewById(R.id.signUp);
+        // implement setOnClickListener event on sign up Button
+        signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // validate the fields and call sign method to implement the api
+                if (validate(name) && validate(email) && validate(password)) {
+                    signUp();
+                }
+            }
+        });
+    }
+
+    private boolean validate(EditText editText) {
+        // check the lenght of the enter data in EditText and give error if its empty
+        if (editText.getText().toString().trim().length() > 0) {
+            return true; // returs true if field is not empty
+        }
+        editText.setError("Please Fill This");
+        editText.requestFocus();
+        return false;
+    }
+
+    private void signUp() {
+        // display a progress dialog
+        final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setCancelable(false); // set cancelable to false
+        progressDialog.setMessage("Please Wait"); // set message
+        progressDialog.show(); // show progress dialog
+
+        // Api is a class in which we define a method getClient() that returns the API Interface class object
+        // registration is a POST request type method in which we are sending our field's data
+        Api.getClient().registration(name.getText().toString().trim(),
+                email.getText().toString().trim(),
+                password.getText().toString().trim(),
+                "email", new Callback<SignUpResponse>() {
+                    @Override
+                    public void success(SignUpResponse signUpResponse, Response response) {
+                        // in this method we will get the response from API
+                        progressDialog.dismiss(); //dismiss progress dialog
+                        signUpResponsesData = signUpResponse;
+                        // display the message getting from web api
+                        Toast.makeText(MainActivity.this, signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        // if error occurs in network transaction then we can get the error in this method.
+                        Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss(); //dismiss progress dialog
+
+                    }
+                });
+    }
+}
+```
 
