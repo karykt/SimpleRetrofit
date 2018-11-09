@@ -24,5 +24,7 @@ compile ‘com.squareup.retrofit2:retrofit:2.3.0’
 **3.Add Internet Permission in the AndroidManifest.xml:** 
 
 Define Internet permission in your Manifest file as showed bellow
-![Add Internet Permission] (https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/internet_permission.JPG)
+
+
+![Add Internet](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/internet_permission.JPG)
 
