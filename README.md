@@ -13,13 +13,16 @@ Let's get started by first creating a new project.
 
 Go to File ⇒ New Project. When it prompts you to select the default activity, select Empty Activity and proceed.
 
+
 **2.Add dependencies:** 
 
 Add this library in your build.gradle file in app module.
 
 compile ‘com.squareup.retrofit2:retrofit:2.3.0’
 
+
 **3.Add Internet Permission in the AndroidManifest.xml:** 
 
-Define Internet permission in our Manifest file as showed bellow
+Define Internet permission in your Manifest file as showed bellow
+![Add Internet Permission] (https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/internet_permission.JPG)
 
