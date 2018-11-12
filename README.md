@@ -7,16 +7,16 @@ Retrofit makes relatively easy to retrieve and upload JSON (or other structured 
 
 ## Getting Started
 
-Let's get started by first creating a new project.
+Let's get started by creating a new project.
 
 **1.Create a new project:**
 
-Go to File ⇒ New Project and create a new project named RetrofitTutorial. 
+Firts, Go to File ⇒ New Project and create a new project named RetrofitTutorial. 
 
 ![Create new project](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/new_project.JPG)
 
 
-Then, you have to select the default activity ⇒  select Empty Activity and proceed.
+In addition, you have to select the default activity ⇒  select Empty Activity and proceed.
 
 ![Select Activity](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/main_activity.JPG)
 
@@ -37,7 +37,7 @@ compile "com.android.support:recyclerview-v7:28.0.1"
 
 **3.Add Internet Permission in the AndroidManifest.xml:** 
 
-Define Internet permission in your Manifest file as showed bellow
+Then, define Internet permission in your Manifest file as showed bellow
 
 ```
 <uses-permission android:name="android.permission.INTERNET" />
@@ -100,7 +100,7 @@ public class Api {
 
 **6.Create a RecyclerView in our XML file:**
 
-Open res ⇒ layout ⇒ activity_main.xml (or) main.xml and add the following code:
+Afterward, we will create a RecyclerView in our XML file. Open res ⇒ layout ⇒ activity_main.xml (or) main.xml and add the following code:
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
