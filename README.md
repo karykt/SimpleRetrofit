@@ -11,12 +11,20 @@ Let's get started by first creating a new project.
 
 **1.Create a new project:**
 
-Go to File ⇒ New Project and create a new project named RetrofitTutorial. You have to select the default activity ⇒  select Empty Activity and proceed.
+Go to File ⇒ New Project and create a new project named RetrofitTutorial. 
+
+![Create new project](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/new_project.JPG)
+
+
+Then, you have to select the default activity ⇒  select Empty Activity and proceed.
+
+![Select Activity](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/main_activity.JPG)
+
 
 
 **2.Add dependencies:** 
 
-Open the Gradle Script file in the app module and add these libraries in your build.gradle.
+Next, open the Gradle Script file in the app module and add these libraries in your build.gradle.
 
 ```
 compile ‘com.squareup.retrofit2:retrofit:2.3.0’
@@ -35,7 +43,7 @@ Define Internet permission in your Manifest file as showed bellow
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-![Add Internet Permission](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/internet_permission.JPG)
+![Add Internet Permission](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/internet_permission2.JPG)
 
 
 **4.Create the API Interface:** 
