@@ -26,11 +26,13 @@ In addition, you have to select the default activity ⇒  select Empty Activity 
 
 Next, open the Gradle Script file in the app module and add these libraries in your build.gradle.
 
+
 ```
 compile ‘com.squareup.retrofit2:retrofit:2.3.0’
 compile "com.android.support:recyclerview-v7:28.0.1"
 ```
 
+It should look like this:
 
 ![Add Dependencies](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/dependencies.JPG)
 
