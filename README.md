@@ -48,7 +48,61 @@ Then, define Internet permission in your Manifest file as showed bellow
 ![Add Internet Permission](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/internet_permission2.JPG)
 
 
-**4.Create the API Interface:** 
+**4.Create a new class:** 
+
+Next, we will create a new class and call it *SignUpResponse.java* in which we have the setters/getters methosd to get the data from API by using the following code:
+
+
+```
+import java.util.HashMap;
+import java.util.Map;
+
+public class SignUpResponse {
+
+    private String success;
+    private String message;
+    private Integer userid;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    public String getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(String success) {
+        this.success = success;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
+    }
+
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
+    }
+
+}
+```
+
+![Create class Sign up Response](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/sign_up_response.JPG)
+
+
+**5.Create the API Interface:** 
 
 Following, we will create an Interface to define our different methods that will be used for network transactions. Let's name it *ApiInterface*.
 
@@ -73,7 +127,7 @@ public interface ApiInterface {
 ![Create API Interface](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/ApiInterface.JPG)
 
 
-**5.Define the RestAdapter:**
+**6.Define the RestAdapter:**
 
 Now we need to define the RestAdapter to implement the API’s. This class will have a method that creates the connection and then returns the API Interface object.
 
@@ -100,7 +154,7 @@ public class Api {
 ![Define the RestAdapter](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/Api.JPG)
 
 
-**6.Create a RecyclerView in our XML file:**
+**7.Create a RecyclerView in our XML file:**
 
 Afterward, we will create a RecyclerView in our XML file. Open res ⇒ layout ⇒ activity_main.xml (or) main.xml and add the following code:
 
@@ -185,7 +239,7 @@ Afterward, we will create a RecyclerView in our XML file. Open res ⇒ layout �
 </RelativeLayout>
 ```
 
-**7.Add code to the MainActivity.java:**
+**8.Add code to the MainActivity.java:**
 
 Finally, we are getting reference of the *EditText* and *Button.After* that we implemented the *setOnClickListener* event. The data in *EditText* is validate and then we are implementing signup api to save the data in our database. After getting response from the api we are displaying the message on the screen by using a Toast.
 
@@ -278,4 +332,14 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+
+**9.Done!**
+
+This is how your app should look like:
+
+
+![App final](https://github.com/karykt/SimpleRetrofit/blob/master/Retrofit%20images/final_cap1.jpg)
+
+
+
 
