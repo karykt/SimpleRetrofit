@@ -28,7 +28,7 @@ Next, open the Gradle Script file in the app module and add these libraries in y
 
 
 ```
-compile ‘com.squareup.retrofit2:retrofit:2.3.0’
+compile "com.squareup.retrofit2:retrofit:2.3.0"
 compile "com.android.support:recyclerview-v7:28.0.1"
 ```
 
